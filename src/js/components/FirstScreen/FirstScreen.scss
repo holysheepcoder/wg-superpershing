@@ -1,0 +1,32 @@
+@import 'varibales';
+
+.header {
+    display: flex;
+    padding: 40px 40px 50px 40px;
+    justify-content: space-between;
+    align-items: none;
+}
+
+.header-logo {
+    // width: 180px;
+    // height: auto;
+}
+
+.header-menu__item {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    color: $accent-color;
+    font-family: $secondary-font;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: $accent-color;
+    }
+}
