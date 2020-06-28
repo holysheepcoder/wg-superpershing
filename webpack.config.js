@@ -16,8 +16,9 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].js',
-        publicPath: '/'
+        filename: '[name].bundle.js',
+        publicPath: '/',
+        chunkFilename: '[chunkhash].bundle.js',
     },
 
     module: {
@@ -70,7 +71,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
-        modules: [path.join(__dirname, 'src', 'js'), 'node_modules'],
+        modules: [path.join(__dirname, 'src'), 'node_modules'],
         extensions: ['.js', '.jsx', '.scss']
     }
 };

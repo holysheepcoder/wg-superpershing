@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import ReactPageScroller from "react-page-scroller";
 import FirstScreen from './FirstScreen/FirstScreen';
+import SecondScreen from './SecondScreen/SecondScreen';
 
 export default () => {
     const [currentPage, setCurrentPage] = useState(0)
@@ -13,8 +14,8 @@ export default () => {
             pageOnChange={handlePageChange}
             customPageNumber={currentPage}
         >
-            <FirstScreen />
-            <FirstScreen />
+            <FirstScreen onChangeScreen={setCurrentPage} />
+            <SecondScreen />
         </ReactPageScroller>
     )
 }

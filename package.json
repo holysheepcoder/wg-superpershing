@@ -8,11 +8,11 @@
     "prod": "node --max-old-space-size=8192 node_modules/.bin/webpack -p --config webpack.config.prod.js --cache",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p --config webpack.config.prod.js",
-    "start": "npm run build && node dist/",
+    "start": "npm run build && node server.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
-  "homepage": "http://holysheepcoder.github.io/wg-superpershing",
+  "homepage": "https://holysheepcoder.github.io/wg-superpershing",
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
@@ -73,11 +73,14 @@
   "dependencies": {
     "@babylonjs/core": "^4.1.0",
     "babylonjs-hook": "0.0.1",
+    "date-fns": "^2.14.0",
+    "express": "^4.17.1",
     "file-loader": "^6.0.0",
     "lodash": "^4.17.15",
     "react": "^16.9.0",
     "react-dom": "^16.13.1",
     "react-page-scroller": "^2.0.7-beta",
+    "react-script": "^2.0.5",
     "three": "^0.118.1"
   },
   "author": "",

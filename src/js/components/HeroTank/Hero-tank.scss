@@ -1,0 +1,15 @@
+.hero-pershing__container {
+    canvas {
+        position: absolute;
+        z-index: 100;
+        left: 0;
+        bottom: 0;
+        outline: none;
+        border: none;
+
+        &:hover {
+            cursor: move;
+        }
+    }
+
+}
