@@ -23,7 +23,7 @@ export const TimeProgressBar = () => {
 
         ctx.font = 'bold 200pt Roboto';
 
-        canvas.width = Math.floor(ctx.measureText('0D:00:00:00').width);
+        // canvas.width = Math.floor(ctx.measureText('0D:00:00:00').width);
 
         const draw = () => {
             const diff = Math.max(0, endDate - new Date());
