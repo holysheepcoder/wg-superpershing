@@ -5,12 +5,13 @@ import './TimeProgressBar.scss';
 
 export const TimeProgressBar = () => {
     //TODO: Smth strange with default date
-    /**
-     * 60 seconds set for showing implementation. You can uncomment 2 lines above
-     */
-    const endDate = new Date('July 7, 2020 15:55:00');
-    const startDate = new Date('June 1, 2020 15:24:00');
 
+    const endDate = new Date('July 3, 2020 15:55:00');
+    const startDate = new Date('June 25, 2020 15:24:00');
+
+    /**
+     * 60 seconds was set for showing the implementation
+     */
     //const endDate = new Date(Date.now() + 1000 * 60);
     //const startDate = new Date(Date.now());
 
@@ -21,11 +22,8 @@ export const TimeProgressBar = () => {
         let ctx = canvas.getContext('2d');
 
         ctx.font = 'bold 200pt Roboto';
-        const defaultString = '0D:00:00:00';
 
-        const defaultStringWidth = Math.floor(ctx.measureText(defaultString).width);
-        // TODO: Fixe this shit
-        //canvas.width = defaultStringWidth;
+        canvas.width = Math.floor(ctx.measureText('0D:00:00:00').width);
 
         const draw = () => {
             const diff = Math.max(0, endDate - new Date());
@@ -48,11 +46,6 @@ export const TimeProgressBar = () => {
             ctx.font = 'bold 200pt Roboto';
             ctx.strokeText(formattedStringLeft, 0, canvas.height / 2 + 100 - 5);
 
-            const textWidth = Math.floor(ctx.measureText(formattedStringLeft).width);
-
-            // if (textWidth !== defaultStringWidth) {
-            //     canvas.width = textWidth;
-            // }
             if (range >= 0) {
                 window.requestAnimationFrame(draw);
             }

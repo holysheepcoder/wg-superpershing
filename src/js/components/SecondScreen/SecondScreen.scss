@@ -25,3 +25,210 @@
         padding: 0 115px;
     }
 }
+
+.description-tab {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    .description-tab__desc {
+        line-height: 24px;
+        text-align: left;
+        font-size: 16px;
+        font-family: $main-font;
+        color: $grey-color;
+        font-weight: 300;
+        margin-bottom: 40px;
+    }
+}
+.description-tab__left {
+    max-width: 460px;
+    padding: 0 56px;
+    .button {
+        display: inline-flex;
+        align-items: center;
+        padding: 17px 55px;
+        color: $main-color;
+        font-weight: 400;
+        font-size: 20px;
+        font-family: $main-font;
+        border: 2px solid $main-color;
+
+        &:before {
+            position: absolute;
+            z-index: 1;
+            top: -10px;
+            left: -10px;
+
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+
+            content: '';
+            transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: scale(0);
+
+            opacity: 0.3;
+            background-color: $accent-color;
+        }
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            content: '';
+            transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            //animation-name: video_sc;
+            //animation-duration: 1.2s;
+            //animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            //animation-delay: 0.5s;
+            //animation-iteration-count: infinite;
+
+            opacity: 0.4;
+            border-color: inherit;
+            //background-color: $accent-color;
+        }
+        &:hover {
+            & .icon {
+                transform: translateX(-20px);
+            }
+            &:before {
+                transform: scale(1);
+            }
+
+            &:after {
+                animation: none;
+            }
+        }
+
+        &:active {
+            &:before {
+                background-color: #ff8d00;
+               opacity: 0.7;
+                //transform: scale(1.22);
+            }
+        }
+        .icon {
+            display: block;
+            margin-right: 10px;
+            transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    }
+}
+.description-tab__right {
+    max-width: 460px;
+    padding: 0 56px;
+}
+
+.description-tab__item {
+    display: flex;
+    padding-bottom: 40px;
+
+    .description-tab__item_left {
+        img {
+            padding: 0 20px;
+        }
+    }
+    .description-tab__item_right {
+        .description-tab__item_title {
+            font-weight: bold;
+            font-size: 20px;
+            font-family: $main-font;
+            color: $main-color;
+            margin-bottom: 15px;
+        }
+        .description-tab__item_desc {
+            font-weight: 300;
+            color: $grey-color;
+            font-family: $main-font;
+        }
+    }
+}
+@-webkit-keyframes video_sc {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    100% {
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+
+        opacity: 0;
+    }
+}
+
+@keyframes video_sc {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    100% {
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+
+        opacity: 0;
+    }
+}
+
+.characteristic-tab {
+    display: flex;
+
+    padding: 0 110px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .characteristic-tab__item {
+        padding-right: 65px;
+        max-width: 300px;
+        min-width: 300px;
+        width: 100%;
+        .characteristic-tab__item_title {
+            margin-bottom: 35px;
+            h5 {
+                font-family: $secondary-font;
+                color: $main-color;
+                font-size: 20px;
+            }
+        }
+    }
+    .characteristic-tab__item_list {
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            font-family: $main-font;
+            font-size: 16px;
+            font-weight: 300;
+            padding: 15px 0;
+            position: relative;
+            .list-item__left {
+                text-transform: lowercase;
+                color: $grey-color;
+            }
+            .list-item__right {
+                color: $main-color;
+                white-space: nowrap;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: $light-grey-color;
+            }
+        }
+    }
+}

@@ -74,9 +74,9 @@ export const ThirdScreen = ({ onChangeScreen }) => {
                 duration: 0.2,
                 y: 130,
                 ease: 'back.inOut(1)',
-            })
+            }, "-=0.2")
             .to(imgRef, {
-                duration: 0.4,
+                duration: 0.3,
                 y: 50,
                 scale: 1.4,
                 ease: 'expo.in',
@@ -86,7 +86,7 @@ export const ThirdScreen = ({ onChangeScreen }) => {
                 duration: 0.1,
                 opacity: 0.8,
                 ease: 'back.inOut(1)',
-            });
+            }, "-=0.15");
         setTimeline(orderItemTimeline);
 
         const buttonTimeline = gsap
