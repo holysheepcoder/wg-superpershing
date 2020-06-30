@@ -1,51 +1,66 @@
-import React from 'react';
-import DescriptionTab from '../DescriptionTab/DescriptionTab';
-const data = [
-    {
-        id: '1',
-        tabTitle: "DESCRIPTION",
-        tabContent: 'A reference sample of the vehicle designated T-44A. Developed by the Construction Bureau of Plant No. 183. The vehicle entered service on November 23, 1944, but never saw combat. From the end of November 1944 through September 1945, a total of 570 vehicles were produced. A reference sample of the vehicle designated T-44A. Developed by the Construction Bureau of Plant No. 183. The vehicle entered service on November 23, 1944, but never saw combat. From the end of November 1944 through September 1945, a total of 570 vehicles were produced.'
-    },
-    {
-        id: '2',
-        tabTitle: "CHARACTERISTIC",
-        tabContent: 'Tab Content 2'
-    },
-    {
-        id: '3',
-        tabTitle: "Tab 3",
-        tabContent: 'Tab Content 3'
-    }
-]
+import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import useIsInViewport from 'use-is-in-viewport';
 
-export default () => {
-    const [visibleTab, setVisibleTab] = React.useState(0);
+import { DescriptionTab } from '../DescriptionTab/DescriptionTab';
+import { CharacteristicTab } from '../CharacteristicTab/CharacteristicTab';
 
-    // const listTitles = props.data.map((item) =>
-    //     <li onClick={() => setVisibleTab(item.id)} className={visibleTab === item.id ? "tab-title tab-title--active" : "tab-title"}>{item.tabTitle}</li>
-    // )
-    // const listContent = props.data.map((item) =>
-    //     <p style={visibleTab === item.id ? {} : { display: 'none' }}>{item.tabContent}</p>
-    // )
-    // const onChangeSelectedTab = () => {
+import './SecondScreen.scss';
 
-    // }
+export const SecondScreen = ({ scroll, onChangeScreen }) => {
+    const screenIndicatorRef = useRef(null);
+    const [visibleTab, setVisibleTab] = useState(0);
+    const [isInViewport, targetRef] = useIsInViewport({ target: screenIndicatorRef });
+
+    const scrollToNextSection = () => {
+        scroll.scrollTo(document.querySelector('.third-screen'));
+    };
+    const onChangeTab = index => {
+        setVisibleTab(index);
+    };
+    useEffect(() => {
+        if (isInViewport) {
+            onChangeScreen(1);
+        }
+    }, [isInViewport]);
+
     return (
-        <section className="page-section" >
-            <h2 className="page-title">ABOUT THE TANK</h2>
+        <section
+            className="page-section second-screen"
+            style={{ backgroundImage: `url('../../img/bg_2.png')`, backgroundSize: 'cover' }}
+        >
+            <h2 className="page-title" data-scroll data-scroll-speed="0.4" ref={targetRef}>
+                ABOUT THE TANK
+            </h2>
+
             <div className="tabs">
                 <ul className="tabs-titles">
-                    <li onClick={() => setVisibleTab(0)} className={visibleTab === 0 ? "tab-title tab-title--active" : "tab-title"}>DESCRIPTION</li>
-                    <li onClick={() => setVisibleTab(1)} className={visibleTab === 1 ? "tab-title tab-title--active" : "tab-title"}>CHARACTERISTIC</li>
+                    <li
+                        onClick={() => onChangeTab(0)}
+                        className={visibleTab === 0 ? 'tab-title tab-title--active' : 'tab-title'}
+                    >
+                        DESCRIPTION
+                    </li>
+                    <li
+                        onClick={() => onChangeTab(1)}
+                        className={visibleTab === 1 ? 'tab-title tab-title--active' : 'tab-title'}
+                    >
+                        CHARACTERISTICS
+                    </li>
                 </ul>
                 <div className="tab-content">
-                    {visibleTab === 0 ? (
-                        <DescriptionTab />
-                    ) : (
-                            <div>aaaaaa</div>
-                        )}
+                    <DescriptionTab visibility={visibleTab === 0 ? 'visible' : 'hidden'} />
+                    <CharacteristicTab visibility={visibleTab === 1 ? 'visible' : 'hidden'} />
                 </div>
+            </div>
+            <div className="hero-next" data-scroll data-scroll-speed="0.2" onClick={() => scrollToNextSection()}>
+                <p>Choose the special bundle ↓</p>
             </div>
         </section>
     );
-}
+};
+
+SecondScreen.propTypes = {
+    scroll: PropTypes.object,
+    onChangeScreen: PropTypes.func,
+};

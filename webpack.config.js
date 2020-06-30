@@ -2,7 +2,6 @@ const path = require('path');
 
 const webpack = require('webpack');
 
-const Dotenv = require('dotenv-webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -16,9 +15,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].bundle.js',
-        publicPath: '/',
-        chunkFilename: '[chunkhash].bundle.js',
+        filename: '[name].bundle.js'
     },
 
     module: {
@@ -66,7 +63,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             filename: 'index.html',
-            hash: true
+            hash: false
         }),
         new webpack.HotModuleReplacementPlugin()
     ],

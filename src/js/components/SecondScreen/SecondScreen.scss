@@ -1,0 +1,27 @@
+@import 'variables';
+
+.second-screen {
+    .page-title {
+        padding: 75px 115px 30px;
+        text-align: center;
+    }
+    .tabs-titles {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 65px;
+        .tab-title {
+            margin: 0 13.5px;
+            color: $grey-color;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            &.tab-title--active {
+                color: $main-color;
+            }
+        }
+    }
+    .tab-content {
+        position: relative;
+        padding: 0 115px;
+    }
+}
