@@ -20,7 +20,7 @@ export const FirstScreen = ({ scroll,onChangeScreen }) => {
     return (
         <section
             className="page-section first-screen"
-            style={{ backgroundImage: `url('../../img/bg.png')`, backgroundSize: 'cover' }}
+            style={{ backgroundImage: `url('img/bg.png')`, backgroundSize: 'cover' }}
         >
             <HeroTank className="hero-pershing__container" width={window.innerWidth} height={window.innerHeight} />
             <div ref={targetRef} className="hero-title" data-scroll data-scroll-speed="0.4" data-scroll-delay="0.2">

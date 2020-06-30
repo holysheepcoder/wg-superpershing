@@ -27,9 +27,9 @@ export const SecondScreen = ({ scroll, onChangeScreen }) => {
     return (
         <section
             className="page-section second-screen"
-            style={{ backgroundImage: `url('../../img/bg_2.png')`, backgroundSize: 'cover' }}
+            style={{ backgroundImage: `url('img/bg_2.png')`, backgroundSize: 'cover' }}
         >
-            <h2 className="page-title" data-scroll data-scroll-speed="0.4" ref={targetRef}>
+            <h2 className="page-title" data-scroll data-scroll-speed="0.4">
                 ABOUT THE TANK
             </h2>
 
@@ -48,7 +48,7 @@ export const SecondScreen = ({ scroll, onChangeScreen }) => {
                         CHARACTERISTICS
                     </li>
                 </ul>
-                <div className="tab-content">
+                <div className="tab-content" ref={targetRef}>
                     <DescriptionTab visibility={visibleTab === 0 ? 'visible' : 'hidden'} />
                     <CharacteristicTab visibility={visibleTab === 1 ? 'visible' : 'hidden'} />
                 </div>

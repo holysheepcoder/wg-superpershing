@@ -15,8 +15,8 @@ export const DescriptionTab = ({ visibility }) => {
                     September 1945, a total of 570 vehicles were produced.
                 </p>
                 <a className="button" href="#" data-scroll data-scroll-speed="1.5">
-                    <span>
-                        <img src="img/play.png" alt="" />
+                    <span className="animation-wave">
+                        <img className="icon" src="img/play.png" alt="" />
                     </span>
                     <p>WATCH VIDEO</p>
                 </a>
