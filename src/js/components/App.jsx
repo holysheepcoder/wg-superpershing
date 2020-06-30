@@ -92,7 +92,6 @@ export const App = () => {
         setScroll(scroll);
     }, []);
     useEffect(() => {
-        console.log({ currentScreen });
         if (currentScreen !== null && currentScreen === 0) {
             headerFirstTitleTimeline.reverse();
         }

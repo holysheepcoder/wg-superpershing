@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import * as THREE from 'three';
 import { debounce } from 'lodash';
 import PropTypes from 'prop-types';
@@ -8,8 +8,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import './Hero-tank.scss';
 
-export const HeroTank = ({ width, height, className }) => {
+export const HeroTank = ({ width, height, className,onTankLoading }) => {
     let entryPoint;
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         // Main
         const mainScene = new THREE.Scene();
@@ -28,11 +29,19 @@ export const HeroTank = ({ width, height, className }) => {
         entryPoint.appendChild(renderer.domElement);
 
         //Loaders
-        const dracoLoader = new DRACOLoader();
+        const manager = new THREE.LoadingManager();
+
+        manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+            if(itemsTotal === itemsLoaded){
+                setIsLoading(false);
+                onTankLoading(false)
+            }
+        };
+        const dracoLoader = new DRACOLoader(manager);
         dracoLoader.setDecoderPath('decoders/');
         dracoLoader.setDecoderConfig({ type: 'js' });
 
-        const gltfLoader = new GLTFLoader();
+        const gltfLoader = new GLTFLoader(manager);
         gltfLoader.setDRACOLoader(dracoLoader);
 
         const modelContainer = new THREE.Group();
@@ -125,11 +134,14 @@ export const HeroTank = ({ width, height, className }) => {
 
         animate();
     }, []);
-    return <div className={className} ref={mount => (entryPoint = mount)} />;
+    return (
+        <div className={className} ref={mount => (entryPoint = mount)} />
+    );
 };
 
 HeroTank.propTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     className: PropTypes.string,
+    onTankLoading: PropTypes.func.isRequired,
 };
